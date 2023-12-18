@@ -96,7 +96,17 @@ do
     switch (menuSelection)
     {
         case "1":
-            Console.WriteLine("this app feature is coming soon - please check back to see progress.");
+            for (int i = 0; i < ourAnimals.GetLength(0); i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    Console.WriteLine();
+                    for (int j = 0; j < ourAnimals.GetLength(1); j++)
+                    {
+                        Console.WriteLine(ourAnimals[i, j]);
+                    }
+                }
+            }
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
