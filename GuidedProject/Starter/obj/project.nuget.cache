@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7sp3KDX+q0IuDdoFREm1wXcbCzQMzdoVIa6qRY+FmXxN83HiS9ORh40i8AvN28v7ZS2y0bBpiICMEB99s5mhjw==",
+  "dgSpecHash": "dVT2lsi4meajF/9+noUaGtwZTrqbq4Px/Pz7cTlLGIPzv2Lm4GyvE2OnFsWheOxdkVOaZDGnhBPrT0UOjfIDGA==",
   "success": true,
-  "projectFilePath": "/Users/troycaselli/Downloads/Guided-project-branching-looping-CSharp-main/GuidedProject/Starter/Starter.csproj",
+  "projectFilePath": "/Users/troycaselli/dev/projects/contoso-pets/GuidedProject/Starter/Starter.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

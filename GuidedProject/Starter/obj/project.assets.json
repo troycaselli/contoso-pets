@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/troycaselli/Downloads/Guided-project-branching-looping-CSharp-main/GuidedProject/Starter/Starter.csproj",
+      "projectUniqueName": "/Users/troycaselli/dev/projects/contoso-pets/GuidedProject/Starter/Starter.csproj",
       "projectName": "Starter",
-      "projectPath": "/Users/troycaselli/Downloads/Guided-project-branching-looping-CSharp-main/GuidedProject/Starter/Starter.csproj",
+      "projectPath": "/Users/troycaselli/dev/projects/contoso-pets/GuidedProject/Starter/Starter.csproj",
       "packagesPath": "/Users/troycaselli/.nuget/packages/",
-      "outputPath": "/Users/troycaselli/Downloads/Guided-project-branching-looping-CSharp-main/GuidedProject/Starter/obj/",
+      "outputPath": "/Users/troycaselli/dev/projects/contoso-pets/GuidedProject/Starter/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/troycaselli/.nuget/NuGet/NuGet.Config"
