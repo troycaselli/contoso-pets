@@ -146,7 +146,7 @@ do
                 } while (validEntry == false);
 
                 // pet ID
-                animalID = animalSpecies.Substring(0, 1) + (petCount + 1).ToString();
+                animalID = $"{animalSpecies[0]}{petCount}";
 
                 // pet age
                 do
@@ -212,6 +212,14 @@ do
                         animalNickname = "tbd";
                     }
                 } while (animalNickname == "");
+
+                // store new pet in ourAnimals array
+                ourAnimals[petCount, 0] = "ID #: " + animalID;
+                ourAnimals[petCount, 1] = "Species: " + animalSpecies;
+                ourAnimals[petCount, 2] = "Age: " + animalAge;
+                ourAnimals[petCount, 3] = "Nickname: " + animalNickname;
+                ourAnimals[petCount, 4] = "Physical description: " + animalPhysicalDescription;
+                ourAnimals[petCount, 5] = "Personality: " + animalPersonalityDescription;
 
                 // ask if user wants to add another pet
                 if (petCount < maxPets)
