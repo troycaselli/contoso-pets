@@ -285,8 +285,6 @@ do
                         } while (validPhysicalDesc == false);
                     }
                 }
-
-
             }
 
             Console.WriteLine("Press the Enter key to continue.");
@@ -294,7 +292,43 @@ do
             break;
         case "4":
             // Ensure animal nicknames and personality descriptions are complete
-            Console.WriteLine("this app feature is coming soon - please check back to see progress.");
+            for (int i = 0; i < ourAnimals.GetLength(0); i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    // check for valid nickname
+                    if (ourAnimals[i, 3] == "Nickname: ")
+                    {
+                        bool validNickname = false;
+                        do
+                        {
+                            Console.WriteLine($"Enter a nickname for ID #: {ourAnimals[i, 0]}");
+                            readResult = Console.ReadLine();
+                            if (readResult?.Length >= 1)
+                            {
+                                ourAnimals[i, 3] = "Nickname: " + readResult;
+                                validNickname = true;
+                            }
+                        } while (validNickname == false);
+                    }
+
+                    // check for valid personality
+                    if (ourAnimals[i, 5] == "Personality: ")
+                    {
+                        bool validPersonality = false;
+                        do
+                        {
+                            Console.WriteLine($"Enter a personality for ID #: {ourAnimals[i, 0]}");
+                            readResult = Console.ReadLine();
+                            if (readResult?.Length >= 1)
+                            {
+                                ourAnimals[i, 5] = "Personality: " + readResult;
+                                validPersonality = true;
+                            }
+                        } while (validPersonality == false);
+                    }
+                }
+            }
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
