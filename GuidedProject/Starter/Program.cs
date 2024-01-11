@@ -363,7 +363,38 @@ do
             readResult = Console.ReadLine();
             break;
         case "8":
-            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            string dogCharacteristic = "";
+
+            while (dogCharacteristic == "")
+            {
+                Console.WriteLine($"\nEnter one desired dog characteristics to search for");
+                readResult = Console.ReadLine();
+                if (readResult != null)
+                    dogCharacteristic = readResult.ToLower().Trim();
+            }
+
+            bool match = false;
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 1].Contains("dog"))
+                {
+                    string searchString = ourAnimals[i, 3] + " " + ourAnimals[i, 4];
+                    searchString = searchString.ToLower();
+
+                    if (searchString.Contains(dogCharacteristic))
+                    {
+                        string[] nickname = ourAnimals[i, 5].Split(" ");
+                        Console.WriteLine($"\nOur dog {nickname[1]} is a match!");
+                        match = true;
+                    }
+                }
+            }
+
+            if (match == false)
+            {
+                Console.WriteLine($"None of our dogs are a match found for: {dogCharacteristic}");
+            }
+
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
