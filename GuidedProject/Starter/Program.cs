@@ -358,7 +358,38 @@ do
             readResult = Console.ReadLine();
             break;
         case "7":
-            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            string catCharacteristic = "";
+
+            while (catCharacteristic == "")
+            {
+                Console.WriteLine($"\nEnter one desired cat characteristics to search for");
+                readResult = Console.ReadLine();
+                if (readResult != null)
+                    catCharacteristic = readResult.ToLower().Trim();
+            }
+
+            bool catMatch = false;
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 1].Contains("cat"))
+                {
+                    string searchString = ourAnimals[i, 3] + " " + ourAnimals[i, 4];
+                    searchString = searchString.ToLower();
+
+                    if (searchString.Contains(catCharacteristic))
+                    {
+                        string[] nickname = ourAnimals[i, 5].Split(" ");
+                        Console.WriteLine($"\nOur cat {nickname[1]} is a match!");
+                        catMatch = true;
+                    }
+                }
+            }
+
+            if (catMatch == false)
+            {
+                Console.WriteLine($"None of our cats are a match found for: {catCharacteristic}");
+            }
+
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
@@ -373,7 +404,7 @@ do
                     dogCharacteristic = readResult.ToLower().Trim();
             }
 
-            bool match = false;
+            bool dogMatch = false;
             for (int i = 0; i < maxPets; i++)
             {
                 if (ourAnimals[i, 1].Contains("dog"))
@@ -385,12 +416,12 @@ do
                     {
                         string[] nickname = ourAnimals[i, 5].Split(" ");
                         Console.WriteLine($"\nOur dog {nickname[1]} is a match!");
-                        match = true;
+                        dogMatch = true;
                     }
                 }
             }
 
-            if (match == false)
+            if (dogMatch == false)
             {
                 Console.WriteLine($"None of our dogs are a match found for: {dogCharacteristic}");
             }
