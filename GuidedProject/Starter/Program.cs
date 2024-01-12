@@ -454,7 +454,7 @@ do
                     searchString = searchString.ToLower();
                     string[] nickname = ourAnimals[i, 5].Split(" ");
 
-                    for (int j = 5; j > -1; j--)
+                    for (int j = 2; j > -1; j--)
                     {
                         foreach (string icon in searchingDogIcons)
                         {
