@@ -405,12 +405,26 @@ do
             }
 
             bool dogMatch = false;
+            string[] searchingIcons = { ".  ", ".. ", "..." };
+
             for (int i = 0; i < maxPets; i++)
             {
                 if (ourAnimals[i, 1].Contains("dog"))
                 {
                     string searchString = ourAnimals[i, 3] + " " + ourAnimals[i, 4];
                     searchString = searchString.ToLower();
+
+                    for (int j = 5; j > -1; j--)
+                    {
+                        // #5 update "searching" message to show countdown 
+                        foreach (string icon in searchingIcons)
+                        {
+                            Console.Write($"\rsearching our dog {ourAnimals[i, 3]} for {dogCharacteristic} {icon}");
+                            Thread.Sleep(250);
+                        }
+
+                        Console.Write($"\r{new String(' ', Console.BufferWidth)}");
+                    }
 
                     if (searchString.Contains(dogCharacteristic))
                     {
