@@ -394,50 +394,68 @@ do
             readResult = Console.ReadLine();
             break;
         case "8":
-            string dogCharacteristic = "";
+            string[] dogCharacteristics = { };
 
-            while (dogCharacteristic == "")
+            while (dogCharacteristics.Length == 0 || dogCharacteristics[0] == "" || dogCharacteristics == null)
             {
-                Console.WriteLine($"\nEnter one desired dog characteristics to search for");
+                Console.WriteLine($"\nEnter dog characteristics to search for separated by commas");
                 readResult = Console.ReadLine();
                 if (readResult != null)
-                    dogCharacteristic = readResult.ToLower().Trim();
+                {
+                    dogCharacteristics = readResult.ToLower().Split(",");
+                    for (int i = 0; i < dogCharacteristics.Length; i++)
+                    {
+                        dogCharacteristics[i] = dogCharacteristics[i].Trim();
+                    }
+                }
             }
 
-            bool dogMatch = false;
+            bool anyDogMatch = false;
             string[] searchingIcons = { ".  ", ".. ", "..." };
 
             for (int i = 0; i < maxPets; i++)
             {
+                bool dogMatch = false;
                 if (ourAnimals[i, 1].Contains("dog"))
                 {
                     string searchString = ourAnimals[i, 3] + " " + ourAnimals[i, 4];
                     searchString = searchString.ToLower();
+                    string[] nickname = ourAnimals[i, 5].Split(" ");
 
                     for (int j = 5; j > -1; j--)
                     {
-                        // #5 update "searching" message to show countdown 
                         foreach (string icon in searchingIcons)
                         {
-                            Console.Write($"\rsearching our dog {ourAnimals[i, 3]} for {dogCharacteristic} {icon}");
-                            Thread.Sleep(250);
+                            Console.Write($"\rsearching our dog {nickname[1]} for {string.Join(", ", dogCharacteristics)} {icon}");
+                            Thread.Sleep(200);
                         }
 
                         Console.Write($"\r{new String(' ', Console.BufferWidth)}");
                     }
 
-                    if (searchString.Contains(dogCharacteristic))
+                    for (int j = 0; j < dogCharacteristics.Length; j++)
                     {
-                        string[] nickname = ourAnimals[i, 5].Split(" ");
-                        Console.WriteLine($"\nOur dog {nickname[1]} is a match!");
-                        dogMatch = true;
+                        if (searchString.Contains(dogCharacteristics[j]))
+                        {
+                            Console.WriteLine($"Our dog {nickname[1]} matches your search for {dogCharacteristics[j]}.");
+                            anyDogMatch = true;
+                            dogMatch = true;
+                        }
                     }
                 }
-            }
 
-            if (dogMatch == false)
+                if (dogMatch == true)
+                {
+                    Console.WriteLine($"{ourAnimals[i, 5]} ({ourAnimals[i, 0]})");
+                    Console.WriteLine($"{ourAnimals[i, 3]}");
+                    Console.WriteLine($"{ourAnimals[i, 4]}");
+                }
+            }
+            Console.WriteLine();
+
+            if (anyDogMatch == false)
             {
-                Console.WriteLine($"None of our dogs are a match found for: {dogCharacteristic}");
+                Console.WriteLine($"None of our dogs are a match found for: {string.Join(", ", dogCharacteristics)}\n");
             }
 
             Console.WriteLine("Press the Enter key to continue.");
