@@ -128,92 +128,11 @@ do
             break;
         case "3":
             // Ensure animal ages and physical descriptions are complete
-            for (int i = 0; i < ourAnimals.GetLength(0); i++)
-            {
-                if (ourAnimals[i, 0] != "ID #: ")
-                {
-                    // check for valid age
-                    if (ourAnimals[i, 2] == "Age: ?")
-                    {
-                        bool validAge = false;
-                        do
-                        {
-                            Console.WriteLine($"Enter an age for ID #: {ourAnimals[i, 0]}");
-                            readResult = Console.ReadLine();
-                            if (readResult != null)
-                            {
-                                if (int.TryParse(readResult, out int petAge))
-                                {
-                                    ourAnimals[i, 2] = "Age: " + readResult;
-                                    validAge = true;
-                                }
-                            }
-                        } while (validAge == false);
-
-                    }
-
-                    // check for valid physical description
-                    if (ourAnimals[i, 3] == "Physical description: ")
-                    {
-                        bool validPhysicalDesc = false;
-                        do
-                        {
-                            Console.WriteLine($"Enter a physical description for ID #: {ourAnimals[i, 0]}");
-                            readResult = Console.ReadLine();
-                            if (readResult?.Length >= 1)
-                            {
-                                ourAnimals[i, 3] = "Physical description: " + readResult;
-                                validPhysicalDesc = true;
-                            }
-                        } while (validPhysicalDesc == false);
-                    }
-                }
-            }
-
-            Console.WriteLine("Press the Enter key to continue.");
-            readResult = Console.ReadLine();
+            PatchAgeAndPhysical.Run(ourAnimals, ref readResult);
             break;
         case "4":
             // Ensure animal nicknames and personality descriptions are complete
-            for (int i = 0; i < ourAnimals.GetLength(0); i++)
-            {
-                if (ourAnimals[i, 0] != "ID #: ")
-                {
-                    // check for valid nickname
-                    if (ourAnimals[i, 5] == "Nickname: ")
-                    {
-                        bool validNickname = false;
-                        do
-                        {
-                            Console.WriteLine($"Enter a nickname for ID #: {ourAnimals[i, 0]}");
-                            readResult = Console.ReadLine();
-                            if (readResult?.Length >= 1)
-                            {
-                                ourAnimals[i, 5] = "Nickname: " + readResult;
-                                validNickname = true;
-                            }
-                        } while (validNickname == false);
-                    }
-
-                    // check for valid personality description
-                    if (ourAnimals[i, 4] == "Personality: ")
-                    {
-                        bool validPersonality = false;
-                        do
-                        {
-                            Console.WriteLine($"Enter a personality description for ID #: {ourAnimals[i, 0]}");
-                            readResult = Console.ReadLine();
-                            if (readResult?.Length >= 1)
-                            {
-                                ourAnimals[i, 4] = "Personality: " + readResult;
-                                validPersonality = true;
-                            }
-                        } while (validPersonality == false);
-                    }
-                }
-            }
-            Console.WriteLine("Press the Enter key to continue.");
-            readResult = Console.ReadLine();
+            PatchNameAndPersonality.Run(ourAnimals, ref readResult);
             break;
         case "5":
             Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
